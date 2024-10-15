@@ -42,7 +42,12 @@ const Tableau = ({appState, pushNewState, mayManipulate = true, columnActions=[]
             }));
           }
 
-          return <li className={`list-group-item p-1 ${extraClass}`} draggable={lastInColumn} onDragStart={onDragStart} >
+          return <li
+            className={`list-group-item p-1 ${extraClass}`}
+            draggable={lastInColumn}
+            onDragStart={onDragStart}
+            key={`col-${c}-row-${i}`}
+          >
             <Company company={c} />
             {
               mayManipulate && lastInColumn && toHandButton(e => {
@@ -81,7 +86,7 @@ const Tableau = ({appState, pushNewState, mayManipulate = true, columnActions=[]
   const rows = []
   for(let i = 0; 4*i < columns.length; i++) {
     rows.push(
-      <div className="row">
+      <div className="row" key={i}>
         <div className="col-3 py-2">{columns[4*i]}</div>
         <div className="col-3 py-2">{columns[4*i+1]}</div>
         <div className="col-3 py-2">{columns[4*i+2]}</div>
@@ -103,7 +108,7 @@ const Tableau = ({appState, pushNewState, mayManipulate = true, columnActions=[]
       continue
 
     summary.push(
-      <span className="d-inline-block px-1">
+      <span className="d-inline-block px-1" key={company}>
         <Company company={company} />
         x
         {card_counts[company]}

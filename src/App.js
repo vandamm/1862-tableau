@@ -23,7 +23,7 @@ const DeckDisplay = ({deck}) => {
     <p>
       Card counts:
       {" "}
-      {COMPANIES.map(company => <span className="d-inline-block px-1">
+      {COMPANIES.map(company => <span className="d-inline-block px-1" key={company}>
         <Company company={company} />
         x
         {deck.current_count(company)}

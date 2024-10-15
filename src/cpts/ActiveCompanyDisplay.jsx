@@ -29,7 +29,7 @@ const ActiveCompanyDisplay = ({appState, pushNewState, showActions = true}) => {
         } else if(deck.active_companies.includes(company)) {
           status = "(active)"
           actions = [
-            <button className="btn btn-link py-0" aria-label={`Deactivate ${company}`} onClick={(e) => {
+            <button key="deactivate" className="btn btn-link py-0" aria-label={`Deactivate ${company}`} onClick={(e) => {
               const newDeck = deck.deactivate_company(company)
               const newState = appState.with_updates({deck: newDeck})
               pushNewState(newState)}}>
@@ -39,7 +39,7 @@ const ActiveCompanyDisplay = ({appState, pushNewState, showActions = true}) => {
           ]
         } else {
           actions = [
-            <button className="btn btn-link py-0" aria-label={`Remove ${company}`} onClick={(e) => {
+            <button key="remove" className="btn btn-link py-0" aria-label={`Remove ${company}`} onClick={(e) => {
               const newDeck = deck.remove_company(company)
               const newState = appState.with_updates({deck: newDeck}).filter_tableau()
               pushNewState(newState)
@@ -47,14 +47,14 @@ const ActiveCompanyDisplay = ({appState, pushNewState, showActions = true}) => {
             <span aria-hidden="true" className="text-danger">&times;</span>
             Remove
             </button>,
-            <button className="btn btn-link py-0" aria-label={`Activate ${company}`} onClick={(e) => {pushNewState(appState.with_updates({deck: deck.activate_company(company)}))}}>
+            <button key="activate" className="btn btn-link py-0" aria-label={`Activate ${company}`} onClick={(e) => {pushNewState(appState.with_updates({deck: deck.activate_company(company)}))}}>
               <span aria-hidden="true" className="text-danger">&#10003;</span>
               Activate
             </button>
           ]
         }
 
-        return <li>
+        return <li key={company}>
           <Company company={company}/>
           {" "}
           <small>{status}</small>
