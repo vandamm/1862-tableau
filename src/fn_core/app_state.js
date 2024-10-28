@@ -29,6 +29,13 @@ class AppState {
     }
   }
 
+  tableau_company_counts() {
+    return this.card_columns.flat().reduce((acc, company) => ({
+      ...acc,
+      [company]: (acc[company] || 0) + 1
+    }), {});
+  }
+
   filter_tableau() {
     return this.with_updates({
       card_columns: this.card_columns.map(column => column.filter(x => !this.deck.removed_companies.includes(x)))

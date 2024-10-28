@@ -97,20 +97,6 @@ const Tableau = ({appState, pushNewState, mayManipulate = true, columnActions=[]
     }
   }
 
-  const summary = []
-  for(const company of COMPANIES) {
-    if(!card_counts[company])
-      continue
-
-    summary.push(
-      <span className="d-inline-block px-1">
-        <Company company={company} />
-        x
-        {card_counts[company]}
-      </span>
-    )
-  }
-
   return <Card title="Tableau">
     <div className="card-text">
       { mayManipulate && <p className="form-inline justify-content-center">
@@ -121,10 +107,6 @@ const Tableau = ({appState, pushNewState, mayManipulate = true, columnActions=[]
         Cards you've drawn
       </h5>
       {rows}
-      <h5 className="card-title">
-        Summary
-      </h5>
-      <p>{summary}</p>
     </div>
   </Card>
 }

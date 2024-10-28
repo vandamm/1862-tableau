@@ -1,41 +1,16 @@
 import './App.css';
 import React from 'react';
 
-import COMPANIES from './fn_core/companies'
 import { SELECT_TABLEAU_SIZE_PHASE, SELECT_MULLIGAN_PHASE, NORMAL_PLAY_PHASE } from './fn_core/app_state'
 import { useLocalStorageForHistory } from './imperative_shell/hooks'
 
 import ActiveCompanyDisplay from './cpts/ActiveCompanyDisplay'
-import Company from './cpts/Company'
 import Card from './cpts/Card'
 import Hand from './cpts/Hand'
 import Charters from './cpts/Charters'
 import AppState from './fn_core/app_state'
 import BankPool from './cpts/BankPool'
 import Tableau from './cpts/Tableau'
-
-const DeckDisplay = ({deck}) => {
-  return <Card title="Deck">
-    <p>
-      {`Cards in deck:
-                  ${deck.total_count()}`}
-    </p>
-    <p>
-      Card counts:
-      {" "}
-      {COMPANIES.map(company => <span className="d-inline-block px-1">
-        <Company company={company} />
-        x
-        {deck.current_count(company)}
-        </span>)
-      }
-    </p>
-    { deck.overflow_pile.length > 0 &&
-        <p>Overflow cards:
-        { deck.unremoved_overflow_pile().join(", ") } </p>
-    }
-  </Card>
-}
 
 const RANDOM_COMPANIES_REMOVED_IN_SETUP = 4
 
@@ -108,7 +83,6 @@ const Phase1App = ({appState, pushNewState}) => {
 
     <div className="row">
     <div className="col-3">
-      <DeckDisplay deck={appState.deck} />
       <ActiveCompanyDisplay appState={appState} pushNewState={pushNewState} showActions={false} />
     </div>
     <div className="col-9">
@@ -121,7 +95,6 @@ const Phase1App = ({appState, pushNewState}) => {
 const Phase2App = ({appState, pushNewState}) => {
   return <div className="row">
     <div className="col-3">
-      <DeckDisplay deck={appState.deck} />
       <ActiveCompanyDisplay appState={appState} pushNewState={pushNewState} />
     </div>
     <div className="col-6">
