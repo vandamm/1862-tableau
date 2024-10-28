@@ -170,12 +170,8 @@ function App() {
         </small>
       </header>
       <div className="row no-gutters mb-3">
-        <div className="col-6">
-          <button className="btn btn-block btn-secondary rounded-0" onClick={undo}>UNDO</button>
-        </div>
-        <div className="col-6">
-          <button className="btn btn-block btn-warning rounded-0" onClick={reset}>RESET</button>
-        </div>
+        <button className="btn col btn-secondary rounded-0" onClick={undo}>UNDO</button>
+        <button className="btn col btn-warning rounded-0" onClick={reset}>RESET</button>
       </div>
       {currentAppState}
       <footer className="App-footer">

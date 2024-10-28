@@ -23,6 +23,10 @@
   color: white;
 }
 
+.App-header small {
+  font-size: 80%;
+}
+
 .App-link {
   color: #61dafb;
 }
@@ -47,4 +51,8 @@
 .stock-card-text {
   padding: 3px 8px;
   font-weight: 500;
+}
+
+.btn-link {
+  text-decoration: none;
 }
